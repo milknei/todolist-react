@@ -1,17 +1,17 @@
 import { useState } from "react";
 
-export default function Taskslist({ tasks, onAddTask, onChangeTask, onDeleteTask }) {
+export default function Taskslist({ tasks, onChangeTask, onDeleteTask }) {
   return (
     <ol>
       {tasks.map((task) => {
-      return (
-        <li key={task.taskId}>
+        return (
+          <li key={task.taskId}>
             <Task task={task} onChangeTask={onChangeTask} />
             <button
               onClick={() => {
                 onDeleteTask(task.taskId);
               }}
-              >
+            >
               Delete
             </button>
           </li>
@@ -28,7 +28,7 @@ function Task({ task, onChangeTask }) {
     taskContent = (
       <>
         <button onClick={() => setIsEditing(false)}>Save</button>
-        <input type="text" value={task.taskText} onInput={(e) => (onChangeTask(task, e.target.value))} />
+        <input type="text" value={task.taskText} onInput={(e) => onChangeTask(task, e.target.value)} />
       </>
     );
   } else {
@@ -46,5 +46,5 @@ function Task({ task, onChangeTask }) {
     );
   }
 
-  return taskContent
+  return taskContent;
 }

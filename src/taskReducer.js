@@ -1,8 +1,4 @@
 export default function tasksReducer(tasks, action) {
-  function localStorgeChange() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
-  
   switch (action.type) {
     case "add": {
       return [
@@ -13,7 +9,6 @@ export default function tasksReducer(tasks, action) {
           isDone: false,
         },
       ];
-      console.log("Asd");
     }
 
     case "change": {
@@ -34,5 +29,4 @@ export default function tasksReducer(tasks, action) {
       throw Error("Unknown action:", action.type);
     }
   }
-  console.log("df");
 }

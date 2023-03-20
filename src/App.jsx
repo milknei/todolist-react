@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { useReducer } from "react";
 import tasksReducer from "./taskReducer";
 import Newtask from "./Newtask";
 import Taskslist from "./Taskslist";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 let nextId = 2;
@@ -28,7 +25,7 @@ function App() {
       task: {
         ...task,
         taskText: taskText,
-      }
+      },
     });
   }
 
@@ -38,7 +35,7 @@ function App() {
       taskId: taskId,
     });
   }
-  
+
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
   return (
