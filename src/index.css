@@ -56,8 +56,21 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+ul {
+  list-style: none;
+}
+
 li {
   margin: 10px 0;
+  cursor: pointer;
+}
+
+li.done > span {
+  text-decoration: line-through;
+}
+
+input {
+  padding: 8px;
 }
 
 @media (prefers-color-scheme: light) {

@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-export default function Taskslist({ tasks, onChangeTask, onDeleteTask }) {
+export default function Taskslist({ tasks, onChangeTask, onDeleteTask, onDoneTask }) {
   return (
-    <ol>
+    <ul>
       {tasks.map((task) => {
         return (
-          <li key={task.taskId}>
+          <li key={task.taskId} onClick={() => onDoneTask(task.taskId)} className={task.isDone ? "done" : ""}>
             <Task task={task} onChangeTask={onChangeTask} />
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 onDeleteTask(task.taskId);
               }}
             >
@@ -17,7 +18,7 @@ export default function Taskslist({ tasks, onChangeTask, onDeleteTask }) {
           </li>
         );
       })}
-    </ol>
+    </ul>
   );
 }
 
@@ -28,7 +29,7 @@ function Task({ task, onChangeTask }) {
     taskContent = (
       <>
         <button onClick={() => setIsEditing(false)}>Save</button>
-        <input type="text" value={task.taskText} onInput={(e) => onChangeTask(task, e.target.value)} />
+        <input type="text" value={task.taskText} onInput={(e) => onChangeTask(task.taskId, e.target.value)} />
       </>
     );
   } else {

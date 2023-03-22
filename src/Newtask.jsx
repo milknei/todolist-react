@@ -8,6 +8,7 @@ export default function Newtask({ onAddTask }) {
       onSubmit={(e) => {
         e.preventDefault();
         taskText && onAddTask(taskText);
+        setTaskText("");
         e.target.reset();
       }}
     >
