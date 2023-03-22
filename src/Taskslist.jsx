@@ -5,8 +5,8 @@ export default function Taskslist({ tasks, onChangeTask, onDeleteTask, onDoneTas
     <ul>
       {tasks.map((task) => {
         return (
-          <li key={task.taskId} onClick={() => onDoneTask(task.taskId)} className={task.isDone ? "done" : ""}>
-            <Task task={task} onChangeTask={onChangeTask} />
+          <li key={task.taskId}>
+            <Task task={task} onChangeTask={onChangeTask} onDoneTask={onDoneTask} />
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -22,7 +22,7 @@ export default function Taskslist({ tasks, onChangeTask, onDeleteTask, onDoneTas
   );
 }
 
-function Task({ task, onChangeTask }) {
+function Task({ task, onChangeTask, onDoneTask }) {
   const [isEditing, setIsEditing] = useState(false);
   let taskContent;
   if (isEditing) {
@@ -42,7 +42,7 @@ function Task({ task, onChangeTask }) {
         >
           Edit
         </button>
-        <span>{task.taskText} </span>
+        <span onClick={() => onDoneTask(task.taskId)} className={task.isDone ? "done" : ""}>{task.taskText}</span>
       </>
     );
   }

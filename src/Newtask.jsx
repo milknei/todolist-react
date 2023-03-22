@@ -12,6 +12,8 @@ export default function Newtask({ onAddTask }) {
         e.target.reset();
       }}
     >
+      <div>
+
       <input
         type="text"
         name="taskText"
@@ -19,8 +21,12 @@ export default function Newtask({ onAddTask }) {
         onInput={(e) => {
           setTaskText(e.target.value);
         }}
-      />
+        />
+        </div>
+        <div>
+
       <button type="submit">Add task</button>
+        </div>
     </form>
   );
 }
