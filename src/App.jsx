@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Newtask from "./Newtask";
-import Taskslist from "./Taskslist";
+import Newtask from "../components/Newtask";
+import Taskslist from "../components/Taskslist";
 import "./App.css";
 
 const initialTasks = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [];
